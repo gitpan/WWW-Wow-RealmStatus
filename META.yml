@@ -1,0 +1,23 @@
+---
+name: WWW-Wow-RealmStatus
+version: 0.01
+author:
+  - 'Nick Gerakines <nick@gerakines.net>'
+abstract: The great new WWW::Wow::RealmStatus!
+license: perl
+resources:
+  license: http://dev.perl.org/licenses/
+build_requires:
+  Cache::Memcached: 0
+  JSON::XS: 0
+  LWP::UserAgent: 0
+  Test::More: 0
+  XML::Descent: 0
+provides:
+  WWW::Wow::RealmStatus:
+    file: lib/WWW/Wow/RealmStatus.pm
+    version: 0.01
+generated_by: Module::Build version 0.2805
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.2.html
+  version: 1.2
