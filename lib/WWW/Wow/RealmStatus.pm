@@ -3,7 +3,7 @@ package WWW::Wow::RealmStatus;
 use warnings;
 use strict;
 
-our $VERSION = '0.01';
+our $VERSION = '0.3';
 
 use LWP::UserAgent;
 use Cache::Memcached;
@@ -25,20 +25,21 @@ sub new {
         'servers' => $args{'memcached_servers'},
         'debug' => 0,
     });
+    if (! exists $args{'realmstatus_url'}) {
+        $self->{'realmstatus_url'} = BASE_URL . US_REALMS;
+    }
 	return $self;
 }
 
 sub process {
     my ($self) = @_;
     my $ua = LWP::UserAgent->new();
-    my $url = BASE_URL . US_REALMS;
-    my $response = $ua->get($url);
+    my $response = $ua->get($self->{'realmstatus_url'});
     if (! $response->is_success) {
         die $response->status_line;
     }
     my $content = $response->content();
     my @realms = $self->_ret_realms($content);
-    # Stuff data into realms here
     for my $realm (@realms) {
         my $name = $realm->{'n'};
         my $key = $self->_get_realmkey($name);

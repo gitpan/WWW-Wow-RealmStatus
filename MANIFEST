@@ -1,4 +1,4 @@
-Build.PL
+Makefile.PL
 Changes
 MANIFEST
 META.yml
@@ -8,3 +8,4 @@ process.pl
 t/00-load.t
 t/pod-coverage.t
 t/pod.t
+MANIFEST.skip
