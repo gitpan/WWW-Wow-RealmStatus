@@ -3,7 +3,7 @@ package WWW::Wow::RealmStatus;
 use warnings;
 use strict;
 
-our $VERSION = '0.3';
+our $VERSION = '0.4';
 
 use LWP::UserAgent;
 use Cache::Memcached;
@@ -76,7 +76,7 @@ sub _realm_type {
     if ($c eq '2') { return 'PVP' };
     if ($c eq '3') { return 'RP' };
     if ($c eq '4') { return 'PVPRP' };
-    return 'Normal'
+    return 'PVE'
 }
 
 sub _realm_population {
@@ -130,13 +130,11 @@ sub realm_json {
     return $retstr;
 }
 
+=pod
+
 =head1 NAME
 
 WWW::Wow::RealmStatus - The great new WWW::Wow::RealmStatus!
-
-=head1 VERSION
-
-Version 0.01
 
 =head1 SYNOPSIS
 
@@ -244,4 +242,5 @@ under the same terms as Perl itself.
 
 =cut
 
-1; # End of WWW::Wow::RealmStatus
+1;
+
