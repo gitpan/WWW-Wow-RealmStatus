@@ -3,7 +3,7 @@ package WWW::Wow::RealmStatus;
 use warnings;
 use strict;
 
-our $VERSION = '0.4';
+our $VERSION = '0.5';
 
 use LWP::UserAgent;
 use Cache::Memcached;
@@ -73,10 +73,10 @@ sub get_realms {
 
 sub _realm_type {
     my ($self, $c) = @_;
+    if ($c eq '1') { return 'PVE'; }
     if ($c eq '2') { return 'PVP' };
     if ($c eq '3') { return 'RP' };
-    if ($c eq '4') { return 'PVPRP' };
-    return 'PVE'
+    return 'PVPRP'
 }
 
 sub _realm_population {
